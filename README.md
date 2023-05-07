@@ -1,24 +1,5 @@
-# README
+# REFRIGERATION
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This projects is for a company that need a control about temperature in each fridge.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Services to get and post temperature in each fridge
