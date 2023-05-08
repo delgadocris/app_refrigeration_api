@@ -13,7 +13,7 @@ gem "pg", "~> 1.1"
 gem "puma", "~> 5.0"
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
-# gem "jbuilder"
+gem 'jbuilder', '~> 2.5'
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
@@ -39,6 +39,8 @@ gem "rack-cors"
 gem 'devise', '~> 4.2'
 
 gem 'simple_token_authentication', '~> 1.0'
+
+gem "responders"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
