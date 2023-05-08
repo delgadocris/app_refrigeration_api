@@ -34,7 +34,7 @@ class Api::V1::BranchesController < ApplicationController
   end
 
   def set_branches
-    @branches = Branch.all.order("created_at")#.paginate(page: params[:page], per_page: 5)
+    @branches = Branch.all.order("created_at").page(params[:page]).per(params[:per])
   end
 
   def set_fridge
