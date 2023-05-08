@@ -1,4 +1,5 @@
 class Api::V1::BranchesController < ApplicationController
+  before_action :authentication_with_token!
   before_action :set_branches, only: %i[index]
   before_action :clear, only: %i[create]
   before_action :set_fridge, only: %i[by_fridge]
