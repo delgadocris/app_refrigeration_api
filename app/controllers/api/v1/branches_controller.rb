@@ -5,7 +5,7 @@ class Api::V1::BranchesController < ApplicationController
   before_action :set_branch, only: %i[index]
 
   def index
-    @message = "Index branchs succesfully"
+    @message = I18n.t('flash.actions.index.notice', resource_name: I18n.t('branch.one'))
     respond_with(@branches, @message)
   rescue StandardError => e
     render_rescue(e)
@@ -13,14 +13,14 @@ class Api::V1::BranchesController < ApplicationController
 
   def create
     @branch = Branch.create(set_branch_params)
-    @message = "Create branch succesfully"
+    @message = I18n.t('flash.actions.create.notice', resource_name: I18n.t('branch.one'))
     respond_with(@branch, @message)
   rescue StandardError => e
     render_rescue(e)
   end
 
   def by_fridge
-    @message = "La temperatura de la nevera #{@branch.fridge} es #{@branch.temperature}"
+    @message = I18n.t('flash.status_fridge', fridge: @branch.fridge, temperature: @branch.temperature)
     respond_with(@branch, @message)
   rescue StandardError => e
     render_rescue(e)
@@ -39,7 +39,7 @@ class Api::V1::BranchesController < ApplicationController
   def set_fridge
     @branch = Branch.find_by(fridge: params[:fridge])
     unless @branch.present?
-      json_response "Can not found fridge", false, {}, :not_found
+      json_response I18n.t('flash.not_found', resource_name: I18n.t('branch.fridge').downcase), false, {}, :not_found
     end
   end
 

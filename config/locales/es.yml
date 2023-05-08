@@ -1,0 +1,27 @@
+es:
+  hello: "Hola mundo"
+  branch:
+    one: "Sucursal"
+    other: "Sucursales"
+    created_at: "Fecha"
+    fridge: "Nevera"
+    temperature: "Temperatura"
+  flash:
+    actions:
+      index:
+        notice: '%{resource_name} se mostró exitosamente.'
+        alert: '%{resource_name} no se pudo mostrar.'
+      create:
+        notice: '%{resource_name} se creó exitosamente.'
+        alert: '%{resource_name} no se pudo crear.'
+      update:
+        notice: '%{resource_name} se modificó exitosamente.'
+        alert: '%{resource_name} no se pudo modificar.'
+      show:
+        notice: '%{resource_name} se mostró exitosamente.'
+        alert: '%{resource_name} no se pudo mostrar.'
+      destroy:
+        notice: '%{resource_name} se eliminó exitosamente.'
+        alert: '%{resource_name} no se pudo eliminar.'
+    not_found: 'No se puede encontrar %{resource_name}.'
+    status_fridge: 'La temperatura de la nevera %{fridge} es %{temperature}.'
