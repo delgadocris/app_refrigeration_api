@@ -47,6 +47,10 @@ gem 'rails-i18n'
 
 gem 'kaminari'
 
+gem 'pry', '~> 0.13.1'
+gem 'pry-byebug', '3.9.0'
+gem 'pry-rails', '0.3.9'
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
