@@ -1,8 +1,7 @@
 class Api::V1::BranchesController < ApplicationController
   before_action :authentication_with_token!
   before_action :set_branches, only: %i[index]
-  before_action :clear, only: %i[create]
-  before_action :set_fridge, only: %i[by_fridge]
+  before_action :set_fridge, only: %i[by_fridge update_by_fridge]
   before_action :set_branch, only: %i[index]
 
   def index
@@ -14,8 +13,23 @@ class Api::V1::BranchesController < ApplicationController
 
   def create
     @branch = Branch.create(set_branch_params)
-    @message = I18n.t('flash.actions.create.notice', resource_name: I18n.t('branch.one'))
-    respond_with(@branch, @message)
+    if @branch.save
+      @message = I18n.t('flash.actions.create.notice', resource_name: I18n.t('branch.one'))
+      respond_with(@branch, @message)
+    else
+      raise I18n.t('flash.actions.create.alert', resource_name: I18n.t('branch.one'))
+    end
+  rescue StandardError => e
+    render_rescue(e)
+  end
+
+  def update_by_fridge
+    if @branch.update(temperature: set_branch_params[:temperature])
+      @message = I18n.t('flash.actions.update.notice', resource_name: I18n.t('branch.one'))
+      respond_with(@branch, @message)
+    else
+      raise I18n.t('flash.actions.create.alert', resource_name: I18n.t('branch.one'))
+    end
   rescue StandardError => e
     render_rescue(e)
   end
@@ -34,7 +48,7 @@ class Api::V1::BranchesController < ApplicationController
   end
 
   def set_branches
-    @branches = Branch.all.order("created_at").page(params[:page]).per(params[:per])
+    @branches = Branch.all.order(updated_at: :desc).page(params[:page]).per(params[:per])
   end
 
   def set_fridge
@@ -46,9 +60,5 @@ class Api::V1::BranchesController < ApplicationController
 
   def set_branch_params
     params.require(:branch).permit(Branch.allowed_attributes)
-  end
-
-  def clear
-    Branch.where(fridge: params[:branch][:fridge]).delete_all
   end
 end

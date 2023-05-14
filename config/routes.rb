@@ -14,6 +14,7 @@ Rails.application.routes.draw do
       resources :branches, only: [:index, :create] do
         collection do
           get '/fridge/:fridge', action: 'by_fridge'
+          patch '/fridge/:fridge', action: 'update_by_fridge'
         end
       end
     end
