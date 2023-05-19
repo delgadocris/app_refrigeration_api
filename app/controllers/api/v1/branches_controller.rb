@@ -24,7 +24,7 @@ class Api::V1::BranchesController < ApplicationController
   end
 
   def update_by_fridge
-    if @branch.update(temperature: set_branch_params[:temperature])
+    if @branch.update(temperature: set_branch_params[:temperature], user_id: set_branch_params[:user_id])
       @message = I18n.t('flash.actions.update.notice', resource_name: I18n.t('branch.one'))
       respond_with(@branch, @message)
     else
