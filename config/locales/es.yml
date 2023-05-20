@@ -6,6 +6,7 @@ es:
     created_at: "Fecha"
     fridge: "Nevera"
     temperature: "Temperatura"
+    humedad: "Humedad"
   flash:
     actions:
       index:
@@ -24,4 +25,4 @@ es:
         notice: '%{resource_name} se eliminó exitosamente.'
         alert: '%{resource_name} no se pudo eliminar.'
     not_found: 'No se puede encontrar %{resource_name}.'
-    status_fridge: 'La temperatura de la nevera %{fridge} es %{temperature} C°'
+    status_fridge: 'La temperatura de la nevera %{fridge} es %{temperature} C° y la humedad es %{humidity} %'

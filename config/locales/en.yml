@@ -6,6 +6,7 @@ en:
     created_at: "Created At"
     fridge: 'Fridge'
     temperature: 'Temperature'
+    humidity: 'Humidity'
   flash:
     actions:
       index:
@@ -24,4 +25,4 @@ en:
         notice: '%{resource_name} was successfully destroyed.'
         alert: '%{resource_name} could not be destroyed.'
     not_found: 'Can not found %{resource_name}.'
-    status_fridge: 'The temperature of the fridge %{fridge} is %{temperature} C°.'
+    status_fridge: 'The temperature of the fridge %{fridge} is %{temperature} C° and humidity is %{humidity} %'
